@@ -10,6 +10,8 @@
 ##
 ## Changelog
 ## ~~~~~~~~~
+## - v1.0.2 (2022-10-19)
+##   - Update pre/finishing action names to be distinct, and group with their power/hysteresis settings
 ## - v1.0.1 (2022-09-18)
 ##   - Add instructions how to skip (pre) actions.
 ## - v1.0 (2022-09-02)
@@ -57,6 +59,13 @@ blueprint:
         minutes: 5
       selector:
         duration:
+    
+    pre_actions:
+      name: Starting Actions
+      description: Actions when starting threshhold is crossed.
+        To skip, enter a 'Wait for delay' action of `0` seconds. 
+      selector:
+        action: {}
 
     finishing_threshold:
       name: Finishing power threshold
@@ -80,15 +89,8 @@ blueprint:
         duration:
 
     actions:
-      name: Actions
-      description: Actions (e.g. pushing a notification, TTS announcement, ...)
-        To skip, enter a 'Wait for delay' action of `0` seconds. 
-      selector:
-        action: {}
-
-    pre_actions:
-      name: Actions
-      description: Actions when starting threshhold is crossed.
+      name: Finishing Actions
+      description: Finishing Actions (e.g. pushing a notification, TTS announcement, ...)
         To skip, enter a 'Wait for delay' action of `0` seconds. 
       selector:
         action: {}
