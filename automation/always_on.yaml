@@ -1,0 +1,34 @@
+blueprint:
+  name: Always On
+  description: >-
+    Always keep on a light or switch. If it is turned off, 
+    then immediately turn it back on.
+  source_url: https://github.com/metbril/home-assistant-blueprints/blob/main/automation/always_on.yaml
+  domain: automation
+
+  input:
+    target_entity:
+      name: Entity to always keep on
+      selector:
+        entity:
+          domain:
+            - light
+            - switch
+            - input_boolean
+          multiple: false
+
+trigger:
+  - platform: state
+    entity_id: !input target_entity
+    from: 'on'
+    to: 'off'
+  - platform: homeassistant
+    event: start
+
+action:
+  - service: homeassistant.turn_on
+    target:
+      entity_id: !input target_entity
+
+mode: single
+max_exceeded: silent
