@@ -1,3 +1,8 @@
+#
+# Author: Robert van Bregt
+# Version: 1.0
+# Last update: 2023-11-09
+#
 blueprint:
   name: Always On
   description: >-
